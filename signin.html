@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Teachers Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signin-background {
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            height: 600px;
+            max-width: 450px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .college-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .college-header img {
+            width: 80px;
+            height: auto;
+        }
+
+        .college-header h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .form-column {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-column label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-column input[type="email"],
+        .form-column input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .signin-button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .signin-button:hover {
+            background-color: #45a049;
+        }
+
+        .signin-button:focus {
+            outline: none;
+        }
+
+        .signin-button:active {
+            transform: translateY(2px);
+        }
+
+        .signin-container .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signin-container .signup-link p {
+            margin-bottom: 5px;
+        }
+
+        .signin-container .signup-link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .signin-container .signup-link a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+
+<body background="assets\img\cllg.jpg">
+    <div class="signin-background">
+        <div class="signin-container">
+            <div class="college-header">
+                <img src="assets\img\amalcollegelogo.png" alt="College Logo">
+                <h2>Teachers Companion</h2>
+                <h2>Amal College</h2>
+            </div>
+            <form action="signin.php" method="POST">
+                <div class="form-column">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <br>
+                <input type="submit" value="Sign In" class="signin-button">
+            </form>
+            <br><br><br>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="signup.html">Create Account</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
