@@ -28,7 +28,6 @@ $user = $_SESSION['user'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $user['id']; // Assuming 'id' is stored in session
     $name = $_POST['name'];
-    $dept = $_POST['dept'];
     $email = $_POST['email'];
     $address = $_POST['address'];
     $mobile_no = $_POST['mobile_no'];
@@ -39,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // SQL update query
     $sql = "UPDATE sign_up_tb SET 
             name = '$name',
-            dept = '$dept',
             email = '$email',
             address = '$address',
             mobile_no = '$mobile_no',
@@ -51,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($sql) === TRUE) {
         // Update session with new user details
         $_SESSION['user']['name'] = $name;
-        $_SESSION['user']['dept'] = $dept;
         $_SESSION['user']['email'] = $email;
         $_SESSION['user']['address'] = $address;
         $_SESSION['user']['mobile_no'] = $mobile_no;
@@ -243,7 +240,7 @@ $conn->close();
             <input type="text" id="name" name="name" value="<?php echo $user['name']; ?>" required>
 
             <label for="dept">Department:</label>
-            <input type="text" id="dept" name="dept" value="<?php echo $user['dept']; ?>" required>
+            <input type="text" id="dept" name="dept" value="<?php echo $user['dept']; ?>" readonly>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>

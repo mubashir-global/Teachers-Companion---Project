@@ -12,6 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 // Check if user is logged in
 if (!isset($_SESSION['user'])) {
     header("Location: signin.html"); // Redirect to signin page if not logged in
@@ -20,7 +21,8 @@ if (!isset($_SESSION['user'])) {
 
 // User details from session
 $user = $_SESSION['user'];
-
+$teacher_id = $user['id'];
+$grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -45,13 +47,18 @@ $user = $_SESSION['user'];
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             color: #333;
+            min-height: 100vh;
+            /* Ensure full height layout */
+            display: flex;
+            flex-direction: column;
         }
 
-        /* .dashboard-container {
-            max-width: 1250px;
-            margin: 0 auto;
-            padding: 15px;
-        } */
+        .dashboard-container {
+            flex: 1;
+            /* Fill remaining vertical space */
+            display: flex;
+            flex-direction: column;
+        }
 
         .app-bar {
             display: flex;
@@ -105,7 +112,11 @@ $user = $_SESSION['user'];
         }
 
         main {
+            flex: 1;
+            /* Fill remaining vertical space */
             margin-top: 20px;
+            padding: 0 20px;
+            /* Add padding to main content */
         }
 
         .grid {
@@ -121,6 +132,10 @@ $user = $_SESSION['user'];
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
+            text-decoration: none;
+            /* Ensure links look like cards */
+            color: #333;
+            /* Text color */
         }
 
         .card:hover {
@@ -139,13 +154,13 @@ $user = $_SESSION['user'];
         }
 
         .footer {
-
-            margin-top: 20px;
             padding: 10px;
             background-color: #4CAF50;
             color: #fff;
             text-align: center;
             border-radius: 5px;
+            margin-top: auto;
+            /* Push footer to bottom */
         }
 
         .footer p {
@@ -190,7 +205,6 @@ $user = $_SESSION['user'];
             <nav class="navbar">
                 <ul>
                     <li><a href="#" class="active">Home</a></li>
-
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
@@ -198,87 +212,12 @@ $user = $_SESSION['user'];
         </header>
         <main>
             <div class="grid">
-                <div class="card">
-                    <h3>Time Table & Courses Taught</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Class Charge Details</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Mentoring</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Mentoring Process</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Tutorials</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>University Examinations</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Additional Classes taken</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Seminars</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Professional Development Activities</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Field Based Activities</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Administration Works</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Laboratory Work Details</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Students Projects</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Research Activities, Projects</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Study Tours</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Leave availed</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Academic Plan</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Student Feedbacks</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Any Other Relevant Information</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-                <div class="card">
-                    <h3>Compensatory Work Done</h3>
-                    <p>Neque porro quisquam est qui dolorem ipsum</p>
-                </div>
-
+                <?php foreach ($grids as $grid): ?>
+                    <a href="<?= $grid['url'] ?>" class="card">
+                        <h3><?= $grid['title'] ?></h3>
+                        <p><?= $grid['description'] ?></p>
+                    </a>
+                <?php endforeach; ?>
             </div>
         </main>
         <footer class="footer">

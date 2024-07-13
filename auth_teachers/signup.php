@@ -1,3 +1,54 @@
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "teachers_companion";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $dept = $_POST['dept'];
+    $address = $_POST['address'];
+    $mobile_no = $_POST['mobile_no'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $designation = $_POST['designation'];
+    $qualification = $_POST['qualification'];
+    $date = $_POST['date'];
+
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Prepare and execute SQL statement to insert user data
+    $sql = "INSERT INTO sign_up_tb (name, dept, address, mobile_no, email, password, designation, qualification, date)
+            VALUES ('$name', '$dept', '$address', '$mobile_no', '$email', '$hashed_password', '$designation', '$qualification', '$date')";
+
+    if ($conn->query($sql) === TRUE) {
+        // Registration successful
+        $_SESSION['success'] = "Registration successful! Please sign in.";
+        header("Location: signin.html"); // Redirect to signin page
+        exit();
+    } else {
+        // Registration failed
+        $_SESSION['error'] = "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+// Fetch departments from the database
+$sql = "SELECT * FROM departments ORDER BY course_type, name";
+$departments = $conn->query($sql);
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +57,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Teachers Companion</title>
     <style>
-        /* Reset default styles */
+        /* Inline CSS for Sign Up Page */
         * {
             margin: 0;
             padding: 0;
@@ -20,6 +71,8 @@
             align-items: center;
             height: 100vh;
             /* Set full height of viewport */
+            background: url('assets/img/cllg.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .signup-background {
@@ -88,6 +141,15 @@
             font-size: 1rem;
         }
 
+        .form-column select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
         .signup-button {
             background-color: #4CAF50;
             color: #fff;
@@ -133,7 +195,7 @@
     </style>
 </head>
 
-<body background="assets\img\cllg.jpg">
+<body>
     <div class="signup-background">
         <div class="signup-container">
             <div class="college-header">
@@ -141,7 +203,8 @@
                 <h2>Teachers Companion</h2>
                 <h2>Amal College</h2>
             </div>
-            <form id="signupForm" action="signup.php" method="post" enctype="multipart/form-data">
+            <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+                enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-column">
 
@@ -149,7 +212,25 @@
                         <input type="text" id="name" name="name" required>
 
                         <label for="dept">Department:</label>
-                        <input type="text" id="dept" name="dept" required>
+                        <select id="dept" name="dept" required>
+                            <option value="">Select Department</option>
+                            <?php
+                            $current_course_type = '';
+                            while ($row = $departments->fetch_assoc()) {
+                                if ($row['course_type'] !== $current_course_type) {
+                                    if ($current_course_type !== '') {
+                                        echo "</optgroup>";
+                                    }
+                                    $current_course_type = $row['course_type'];
+                                    echo "<optgroup label='" . $current_course_type . "'>";
+                                }
+                                echo "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+                            }
+                            if ($current_course_type !== '') {
+                                echo "</optgroup>";
+                            }
+                            ?>
+                        </select>
 
                         <label for="address">Address:</label>
                         <input type="text" id="address" name="address" required>
