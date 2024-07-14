@@ -1,18 +1,6 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "teachers_companion";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include ('db_connection.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $dept = $_POST['dept'];
@@ -71,7 +59,7 @@ $conn->close();
             align-items: center;
             height: 100vh;
             /* Set full height of viewport */
-            background: url('assets/img/cllg.jpg') no-repeat center center fixed;
+            background: url('assets\cllg.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -199,7 +187,7 @@ $conn->close();
     <div class="signup-background">
         <div class="signup-container">
             <div class="college-header">
-                <img src="assets/img/amalcollegelogo.png" alt="College Logo" class="college-logo">
+                <img src="assets\amalcollegelogo.png" alt="College Logo" class="college-logo">
                 <h2>Teachers Companion</h2>
                 <h2>Amal College</h2>
             </div>

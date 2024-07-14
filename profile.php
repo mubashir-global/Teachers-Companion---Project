@@ -215,7 +215,7 @@ $conn->close();
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/">Home</a></li>
 
                 <li><a href="profile.php" class="active">Profile</a></li>
                 <li><a href="logout.php">Logout</a></li>

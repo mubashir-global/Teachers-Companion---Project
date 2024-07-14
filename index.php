@@ -1,17 +1,6 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "teachers_companion";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include ('db_connection.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user'])) {
@@ -199,13 +188,14 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
     <div class="dashboard-container">
         <header class="app-bar">
             <div class="app-bar-left">
-                <img src="assets/img/amallogo.jpeg" alt="College Logo" class="college-logo">
-                <span class="welcome-message">Welcome, <?php echo $user['name']; ?></span>
+                <img src="assets\img\amallogo.jpeg" alt="College Logo" class="college-logo">
+                <span class="welcome-message"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome,
+                    <?php echo $user['name']; ?></span>
             </div>
             <nav class="navbar">
                 <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="profile.php">Profile</a></li>
+                    <li><a href="index.php" class="active">Home</a></li>
+                    <li><a href="profile\profile.php">Profile</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>

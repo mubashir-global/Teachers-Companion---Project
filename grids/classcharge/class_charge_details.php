@@ -354,15 +354,14 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
 <body>
     <header class="app-bar">
         <div class="app-bar-left">
-            <img class="college-logo" src="college_logo.png" alt="College Logo">
+            <img class="college-logo" src="assets\img\amallogo.jpeg" alt="College Logo">
             <div class="welcome-message">Welcome, <?php echo $_SESSION['user']['name']; ?>!</div>
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/">Home</a></li>
                 <li><a href="profile.php">Profile</a></li>
-                <li><a href="settings.php">Settings</a></li>
-                <li><a href="signout.php">Sign Out</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

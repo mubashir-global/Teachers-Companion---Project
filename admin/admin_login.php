@@ -1,11 +1,11 @@
 <?php
 session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "teachers_companion";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
