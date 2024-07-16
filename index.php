@@ -25,7 +25,7 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
     <style>
         /* Internal CSS for Dashboard Page */
 
-        /* Reset default styles */
+        
         * {
             margin: 0;
             padding: 0;
