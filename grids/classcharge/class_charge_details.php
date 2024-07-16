@@ -118,24 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'reason' => $reason,
                     'action_taken' => $action_taken
                 ];
-            } elseif ($form_type === 'late_comers') {
-                $table = 'latecomers_oddsem_tb';
-                $data = [
-                    'student_name' => $student_name,
-                    'department' => $department,
-                    'semester' => $semester,
-                    'reason' => $reason,
-                    'action_taken' => $action_taken
-                ];
-            } elseif ($form_type === 'late_comers') {
-                $table = 'latecomers_evensem_tb';
-                $data = [
-                    'student_name' => $student_name,
-                    'department' => $department,
-                    'semester' => $semester,
-                    'reason' => $reason,
-                    'action_taken' => $action_taken
-                ];
             }
         }
 
@@ -175,8 +157,6 @@ $weak_odd = getData('weak_students_oddsem_tb', $conn);
 $weak_even = getData('weak_students_evensem_tb', $conn);
 $remedial_odd = getData('remedial_students_oddsem_tb', $conn);
 $remedial_even = getData('remedial_students_evensem_tb', $conn);
-$latecomers_odd = getData('latecomers_oddsem_tb', $conn);
-$latecomers_even = getData('latecomers_evensem_tb', $conn);
 
 ?>
 
@@ -187,168 +167,8 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Charge Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+    <link rel="stylesheet" href="classcharge.css">
 
-        .app-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .app-bar .app-bar-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .app-bar .app-bar-left .college-logo {
-            width: 50px;
-            height: auto;
-            margin-right: 10px;
-        }
-
-        .app-bar .app-bar-left .welcome-message {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .navbar ul {
-            list-style-type: none;
-            display: flex;
-        }
-
-        .navbar ul li {
-            margin-left: 15px;
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .navbar ul li a:hover {
-            background-color: #45a049;
-        }
-
-        .navbar ul li a.active {
-            background-color: #45a049;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-container {
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .form-box {
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .form-box h3 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .form-box label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .form-box input,
-        .form-box select,
-        .form-box textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 0.9rem;
-        }
-
-        .form-box button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .form-box button:hover {
-            background-color: #45a049;
-        }
-
-        .table-container {
-            margin-top: 20px;
-            overflow-x: auto;
-        }
-
-        .table-container table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .table-container th,
-        .table-container td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .table-container th {
-            background-color: #f2f2f2;
-        }
-
-        .table-container tr:hover {
-            background-color: #f9f9f9;
-        }
-
-        .actions {
-            display: flex;
-            align-items: center;
-        }
-
-        .actions button {
-            margin-left: 10px;
-            background-color: #f44336;
-        }
-
-        .actions button:hover {
-            background-color: #e53935;
-        }
-    </style>
 </head>
 
 <body>
@@ -360,7 +180,8 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
         <nav class="navbar">
             <ul>
                 <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/">Home</a></li>
-                <li><a href="profile.php">Profile</a></li>
+                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/profile/profile.php">Profile</a>
+                </li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -396,7 +217,83 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
                     <input type="text" id="model" name="model" required>
                     <label for="test_papers">Test Papers:</label>
                     <input type="text" id="test_papers" name="test_papers" required>
-                    <button type="submit">Add Class Charge</button>
+                    <button type="submit">Add Class Charge Details</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h3>Add Outstanding Students</h3>
+                <form action="class_charge_details.php" method="POST">
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="form_type" value="outstanding_students">
+                    <label for="type">Type:</label>
+                    <select name="type" id="type">
+                        <option value="odd">Odd Semester</option>
+                        <option value="even">Even Semester</option>
+                    </select>
+                    <label for="student_name">Student Name:</label>
+                    <input type="text" id="student_name" name="student_name" required>
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department" required>
+                    <label for="semester">Semester:</label>
+                    <input type="text" id="semester" name="semester" required>
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" name="course" required>
+                    <label for="marks_obtained">Marks Obtained:</label>
+                    <input type="text" id="marks_obtained" name="marks_obtained" required>
+                    <button type="submit">Add Outstanding Student</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h3>Add Weak Students</h3>
+                <form action="class_charge_details.php" method="POST">
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="form_type" value="weak_students">
+                    <label for="type">Type:</label>
+                    <select name="type" id="type">
+                        <option value="odd">Odd Semester</option>
+                        <option value="even">Even Semester</option>
+                    </select>
+                    <label for="student_name">Student Name:</label>
+                    <input type="text" id="student_name" name="student_name" required>
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department" required>
+                    <label for="semester">Semester:</label>
+                    <input type="text" id="semester" name="semester" required>
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" name="course" required>
+                    <label for="reason">Reason:</label>
+                    <textarea id="reason" name="reason" rows="3" required></textarea>
+                    <label for="action_taken">Action Taken:</label>
+                    <textarea id="action_taken" name="action_taken" rows="3" required></textarea>
+                    <button type="submit">Add Weak Student</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h3>Add Remedial Students</h3>
+                <form action="class_charge_details.php" method="POST">
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="form_type" value="remedial_students">
+                    <label for="type">Type:</label>
+                    <select name="type" id="type">
+                        <option value="odd">Odd Semester</option>
+                        <option value="even">Even Semester</option>
+                    </select>
+                    <label for="student_name">Student Name:</label>
+                    <input type="text" id="student_name" name="student_name" required>
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department" required>
+                    <label for="semester">Semester:</label>
+                    <input type="text" id="semester" name="semester" required>
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" name="course" required>
+                    <label for="reason">Reason:</label>
+                    <textarea id="reason" name="reason" rows="3" required></textarea>
+                    <label for="action_taken">Action Taken:</label>
+                    <textarea id="action_taken" name="action_taken" rows="3" required></textarea>
+                    <button type="submit">Add Remedial Student</button>
                 </form>
             </div>
         </div>
@@ -418,21 +315,21 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($class_charge_odd as $class): ?>
+                    <?php foreach ($class_charge_odd as $detail): ?>
                         <tr>
-                            <td><?php echo $class['class']; ?></td>
-                            <td><?php echo $class['strength']; ?></td>
-                            <td><?php echo $class['year']; ?></td>
-                            <td><?php echo $class['internalexam_proposed_date']; ?></td>
-                            <td><?php echo $class['internalexam_actual_date']; ?></td>
-                            <td><?php echo $class['first_internal']; ?></td>
-                            <td><?php echo $class['model']; ?></td>
-                            <td><?php echo $class['test_papers']; ?></td>
+                            <td><?php echo $detail['class']; ?></td>
+                            <td><?php echo $detail['strength']; ?></td>
+                            <td><?php echo $detail['year']; ?></td>
+                            <td><?php echo $detail['internalexam_proposed_date']; ?></td>
+                            <td><?php echo $detail['internalexam_actual_date']; ?></td>
+                            <td><?php echo $detail['first_internal']; ?></td>
+                            <td><?php echo $detail['model']; ?></td>
+                            <td><?php echo $detail['test_papers']; ?></td>
                             <td class="actions">
                                 <form action="class_charge_details.php" method="POST">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="table" value="class_charge_details_oddsem_tb">
-                                    <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $detail['id']; ?>">
                                     <button type="submit">Delete</button>
                                 </form>
                             </td>
@@ -459,21 +356,21 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($class_charge_even as $class): ?>
+                    <?php foreach ($class_charge_even as $detail): ?>
                         <tr>
-                            <td><?php echo $class['class']; ?></td>
-                            <td><?php echo $class['strength']; ?></td>
-                            <td><?php echo $class['year']; ?></td>
-                            <td><?php echo $class['internalexam_proposed_date']; ?></td>
-                            <td><?php echo $class['internalexam_actual_date']; ?></td>
-                            <td><?php echo $class['first_internal']; ?></td>
-                            <td><?php echo $class['model']; ?></td>
-                            <td><?php echo $class['test_papers']; ?></td>
+                            <td><?php echo $detail['class']; ?></td>
+                            <td><?php echo $detail['strength']; ?></td>
+                            <td><?php echo $detail['year']; ?></td>
+                            <td><?php echo $detail['internalexam_proposed_date']; ?></td>
+                            <td><?php echo $detail['internalexam_actual_date']; ?></td>
+                            <td><?php echo $detail['first_internal']; ?></td>
+                            <td><?php echo $detail['model']; ?></td>
+                            <td><?php echo $detail['test_papers']; ?></td>
                             <td class="actions">
                                 <form action="class_charge_details.php" method="POST">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="table" value="class_charge_details_evensem_tb">
-                                    <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $detail['id']; ?>">
                                     <button type="submit">Delete</button>
                                 </form>
                             </td>
@@ -481,27 +378,6 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
-
-        <div class="form-container">
-            <div class="form-box">
-                <h3>Add Outstanding Students</h3>
-                <form action="class_charge_details.php" method="POST">
-                    <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="form_type" value="outstanding_students">
-                    <label for="student_name">Student Name:</label>
-                    <input type="text" id="student_name" name="student_name" required>
-                    <label for="department">Department:</label>
-                    <input type="text" id="department" name="department" required>
-                    <label for="semester">Semester:</label>
-                    <input type="text" id="semester" name="semester" required>
-                    <label for="course">Course:</label>
-                    <input type="text" id="course" name="course" required>
-                    <label for="marks_obtained">Marks Obtained:</label>
-                    <input type="text" id="marks_obtained" name="marks_obtained" required>
-                    <button type="submit">Add Outstanding Student</button>
-                </form>
-            </div>
         </div>
 
         <div class="table-container">
@@ -572,29 +448,6 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
-
-        <div class="form-container">
-            <div class="form-box">
-                <h3>Add Weak Students</h3>
-                <form action="class_charge_details.php" method="POST">
-                    <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="form_type" value="weak_students">
-                    <label for="student_name">Student Name:</label>
-                    <input type="text" id="student_name" name="student_name" required>
-                    <label for="department">Department:</label>
-                    <input type="text" id="department" name="department" required>
-                    <label for="semester">Semester:</label>
-                    <input type="text" id="semester" name="semester" required>
-                    <label for="course">Course:</label>
-                    <input type="text" id="course" name="course" required>
-                    <label for="reason">Reason:</label>
-                    <textarea id="reason" name="reason" rows="3" required></textarea>
-                    <label for="action_taken">Action Taken:</label>
-                    <textarea id="action_taken" name="action_taken" rows="3" required></textarea>
-                    <button type="submit">Add Weak Student</button>
-                </form>
-            </div>
         </div>
 
         <div class="table-container">
@@ -671,29 +524,6 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
             </table>
         </div>
 
-        <div class="form-container">
-            <div class="form-box">
-                <h3>Add Remedial Students</h3>
-                <form action="class_charge_details.php" method="POST">
-                    <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="form_type" value="remedial_students">
-                    <label for="student_name">Student Name:</label>
-                    <input type="text" id="student_name" name="student_name" required>
-                    <label for="department">Department:</label>
-                    <input type="text" id="department" name="department" required>
-                    <label for="semester">Semester:</label>
-                    <input type="text" id="semester" name="semester" required>
-                    <label for="course">Course:</label>
-                    <input type="text" id="course" name="course" required>
-                    <label for="reason">Reason:</label>
-                    <textarea id="reason" name="reason" rows="3" required></textarea>
-                    <label for="action_taken">Action Taken:</label>
-                    <textarea id="action_taken" name="action_taken" rows="3" required></textarea>
-                    <button type="submit">Add Remedial Student</button>
-                </form>
-            </div>
-        </div>
-
         <div class="table-container">
             <h3>Odd Semester Remedial Students</h3>
             <table>
@@ -767,105 +597,11 @@ $latecomers_even = getData('latecomers_evensem_tb', $conn);
                 </tbody>
             </table>
         </div>
-
-        <div class="form-container">
-            <div class="form-box">
-                <h3>Add Latecomers</h3>
-                <form action="class_charge_details.php" method="POST">
-                    <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="form_type" value="latecomers">
-                    <label for="student_name">Student Name:</label>
-                    <input type="text" id="student_name" name="student_name" required>
-                    <label for="department">Department:</label>
-                    <input type="text" id="department" name="department" required>
-                    <label for="semester">Semester:</label>
-                    <input type="text" id="semester" name="semester" required>
-                    <label for="course">Course:</label>
-                    <input type="text" id="course" name="course" required>
-                    <label for="late_hours">Late Hours:</label>
-                    <input type="text" id="late_hours" name="late_hours" required>
-                    <label for="action_taken">Action Taken:</label>
-                    <textarea id="action_taken" name="action_taken" rows="3" required></textarea>
-                    <button type="submit">Add Latecomer</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="table-container">
-            <h3>Odd Semester Latecomers</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Department</th>
-                        <th>Semester</th>
-                        <th>Course</th>
-                        <th>Late Hours</th>
-                        <th>Action Taken</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($latecomers_odd as $student): ?>
-                        <tr>
-                            <td><?php echo $student['student_name']; ?></td>
-                            <td><?php echo $student['department']; ?></td>
-                            <td><?php echo $student['semester']; ?></td>
-                            <td><?php echo $student['course']; ?></td>
-                            <td><?php echo $student['late_hours']; ?></td>
-                            <td><?php echo $student['action_taken']; ?></td>
-                            <td class="actions">
-                                <form action="class_charge_details.php" method="POST">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="table" value="latecomers_oddsem_tb">
-                                    <input type="hidden" name="id" value="<?php echo $student['id']; ?>">
-                                    <button type="submit">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="table-container">
-            <h3>Even Semester Latecomers</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Department</th>
-                        <th>Semester</th>
-                        <th>Course</th>
-                        <th>Late Hours</th>
-                        <th>Action Taken</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($latecomers_even as $student): ?>
-                        <tr>
-                            <td><?php echo $student['student_name']; ?></td>
-                            <td><?php echo $student['department']; ?></td>
-                            <td><?php echo $student['semester']; ?></td>
-                            <td><?php echo $student['course']; ?></td>
-                            <td><?php echo $student['late_hours']; ?></td>
-                            <td><?php echo $student['action_taken']; ?></td>
-                            <td class="actions">
-                                <form action="class_charge_details.php" method="POST">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="table" value="latecomers_evensem_tb">
-                                    <input type="hidden" name="id" value="<?php echo $student['id']; ?>">
-                                    <button type="submit">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-
     </div>
 </body>
 
 </html>
+
+<?php
+$conn->close();
+?>

@@ -87,6 +87,7 @@ $result = $conn->query($sql);
             background-color: #45a049;
         }
 
+        /* 
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -94,7 +95,7 @@ $result = $conn->query($sql);
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+        } */
 
         h2 {
             margin-bottom: 20px;
@@ -174,8 +175,9 @@ $result = $conn->query($sql);
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="dashboard.php">Home</a></li>
-                <li><a href="profile.php">Profile</a></li>
+                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/">Home</a></li>
+                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/profile/profile.php">Profile</a>
+                </li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

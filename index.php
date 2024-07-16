@@ -194,8 +194,11 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
             </div>
             <nav class="navbar">
                 <ul>
-                    <li><a href="index.php" class="active">Home</a></li>
-                    <li><a href="profile\profile.php">Profile</a></li>
+                    <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/" class="active">Home</a>
+                    </li>
+                    <li><a
+                            href="http://localhost/Teachers%20Companion%20-%20Amal%20College/profile/profile.php">Profile</a>
+                    </li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
