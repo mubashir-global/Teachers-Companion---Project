@@ -4,7 +4,7 @@ include ('db_connection.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user'])) {
-    header("Location: signin.html"); // Redirect to signin page if not logged in
+    header("Location: signin.html"); 
     exit();
 }
 
