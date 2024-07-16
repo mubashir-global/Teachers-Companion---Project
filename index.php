@@ -21,7 +21,7 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Teachers Companion</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="styles.css"> 
     <style>
         /* Internal CSS for Dashboard Page */
 

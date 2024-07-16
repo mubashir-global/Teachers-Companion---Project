@@ -13,7 +13,7 @@ $username = "root";
 $password = "";
 $dbname = "teachers_companion";
 
-// Create connection
+// Create conn
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
