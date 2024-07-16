@@ -24,14 +24,11 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
     <link rel="stylesheet" href="styles.css"> 
     <style>
         /* Internal CSS for Dashboard Page */
-
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
