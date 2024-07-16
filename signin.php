@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['error'] = "Invalid password";
         }
     } else {
-        // No user found with that email
+        //n000
         $_SESSION['error'] = "No user found with that email";
     }
 }
