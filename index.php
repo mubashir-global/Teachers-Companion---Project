@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-// User details from session
+// usr details from session
 $user = $_SESSION['user'];
 $teacher_id = $user['id'];
 $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch_all(MYSQLI_ASSOC);
