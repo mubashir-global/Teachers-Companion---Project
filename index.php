@@ -4,7 +4,7 @@ include ('db_connection.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user'])) {
-    header("Location: signin.html"); 
+    header("Location: signin.html");
     exit();
 }
 
@@ -21,117 +21,122 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Teachers Companion</title>
-    <link rel="stylesheet" href="styles.css"> 
     <style>
-        /* Internal CSS for Dashboard Page */
+        /* General Reset and Box-Sizing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        /* Body Styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f0f0f0;
             color: #333;
             min-height: 100vh;
-            /* Ensure full height layout */
             display: flex;
             flex-direction: column;
         }
 
+        /* Container for Dashboard */
         .dashboard-container {
             flex: 1;
-            /* Fill remaining vertical space */
             display: flex;
             flex-direction: column;
         }
 
+        /* App Bar Styling */
         .app-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* Old Green Color */
             color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .app-bar .app-bar-left {
+        /* Left Side of App Bar */
+        .app-bar-left {
             display: flex;
             align-items: center;
         }
 
-        .app-bar .app-bar-left .college-logo {
+        /* College Logo Styling */
+        .college-logo {
             width: 50px;
             height: auto;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
-        .app-bar .app-bar-left .welcome-message {
-            font-size: 1.2rem;
+        /* Welcome Message Styling */
+        .welcome-message {
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
+        /* Navigation Bar Styling */
         .navbar ul {
             list-style-type: none;
             display: flex;
         }
 
         .navbar ul li {
-            margin-left: 15px;
+            margin-left: 20px;
         }
 
         .navbar ul li a {
             text-decoration: none;
             color: #fff;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .navbar ul li a:hover {
-            background-color: #45a049;
-        }
-
+        .navbar ul li a:hover,
         .navbar ul li a.active {
-            background-color: #45a049;
+            background-color: #388E3C;
         }
 
+        /* Main Content Styling */
         main {
             flex: 1;
-            /* Fill remaining vertical space */
             margin-top: 20px;
-            padding: 0 20px;
-            /* Add padding to main content */
+            padding: 0 30px;
         }
 
+        /* Grid Styling */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 30px;
+            padding-bottom: 20px;
         }
 
+        /* Card Styling */
         .card {
             background-color: #ffffff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
             text-decoration: none;
-            /* Ensure links look like cards */
             color: #333;
-            /* Text color */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 15px;
         }
 
         .card p {
@@ -139,20 +144,21 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
             line-height: 1.6;
         }
 
+        /* Footer Styling */
         .footer {
-            padding: 10px;
-            background-color: #4CAF50;
+            padding: 15px 30px;
+            background-color: #4CAF50; /* Old Green Color */
             color: #fff;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 0 0 10px 10px;
             margin-top: auto;
-            /* Push footer to bottom */
         }
 
         .footer p {
             margin: 5px 0;
         }
 
+        /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
             .app-bar {
                 flex-direction: column;
@@ -160,7 +166,7 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
                 padding: 10px;
             }
 
-            .app-bar .app-bar-left {
+            .app-bar-left {
                 margin-bottom: 10px;
             }
 
@@ -185,17 +191,13 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
     <div class="dashboard-container">
         <header class="app-bar">
             <div class="app-bar-left">
-                <img src="assets\img\amallogo.jpeg" alt="College Logo" class="college-logo">
-                <span class="welcome-message"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome,
-                    <?php echo $user['name']; ?></span>
+                <img src="assets/img/amallogo.jpeg" alt="College Logo" class="college-logo">
+                <span class="welcome-message">Welcome, <?php echo $user['name']; ?></span>
             </div>
             <nav class="navbar">
                 <ul>
-                    <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/" class="active">Home</a>
-                    </li>
-                    <li><a
-                            href="http://localhost/Teachers%20Companion%20-%20Amal%20College/profile/profile.php">Profile</a>
-                    </li>
+                    <li><a href="index.php" class="active">Home</a></li>
+                    <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>

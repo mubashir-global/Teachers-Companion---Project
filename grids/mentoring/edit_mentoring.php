@@ -189,7 +189,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </ul>
         </nav>
     </header>
-
     <div class="container">
         <div class="form-container">
             <h3>Edit Mentoring Record</h3>

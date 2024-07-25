@@ -222,10 +222,10 @@ $conn->close();
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/">Home</a></li>
-                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/profile/profile.php">Profile</a>
+                <li><a href="http://localhost/Teachers-Companion---Project/index.php">Home</a></li>
+                <li><a href="http://localhost/Teachers-Companion---Project/profile.php">Profile</a>
                 </li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="http://localhost/Teachers-Companion---Project/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

@@ -58,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_POST['action'] === 'add') {
         $type = $_POST['type'];
         $form_type = $_POST['form_type'];
-
         if ($form_type === 'class_charge_details') {
             $class = $_POST['class'];
             $strength = $_POST['strength'];
@@ -179,10 +178,10 @@ $remedial_even = getData('remedial_students_evensem_tb', $conn);
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/">Home</a></li>
-                <li><a href="http://localhost/Teachers%20Companion%20-%20Amal%20College/profile/profile.php">Profile</a>
+                <li><a href="http://localhost/Teachers-Companion---Project">Home</a></li>
+                <li><a href="http://localhost/Teachers-Companion---Project/profile.php">Profile</a>
                 </li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="http://localhost/Teachers-Companion---Project/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
