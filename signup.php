@@ -59,7 +59,7 @@ $conn->close();
             align-items: center;
             height: 100vh;
             /* Set full height of viewport */
-            background: url('assets\cllg.jpg') no-repeat center center fixed;
+            background: url('C:\wamp64\www\Teachers-Companion---Project\assets\cllg.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -183,7 +183,8 @@ $conn->close();
     </style>
 </head>
 
-<body>
+<body background="assets\cllg.jpg">
+
     <div class="signup-background">
         <div class="signup-container">
             <div class="college-header">
