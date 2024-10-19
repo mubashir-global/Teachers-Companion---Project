@@ -2,7 +2,7 @@
 // Database connection
 $servername = "localhost"; 
 $username = "root"; 
-$password = ""; 
+$password = "Junu123#"; 
 $dbname = "teachers_companion"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,6 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $message = "";
+include '../../header_nav_footer.php';
 
 // Function to sanitize input
 function sanitizeInput($data) {
@@ -137,7 +138,7 @@ $result = $conn->query($sql);
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 20px;
+            /* padding: 20px; */
             background-color: #f0f4f8;
         }
         .container {

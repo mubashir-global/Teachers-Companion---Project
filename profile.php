@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 // Database connection details
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "Junu123#";
 $dbname = "teachers_companion";
 
 // Create conn
@@ -208,20 +208,19 @@ $conn->close();
 
 <body>
 
-    <header class="app-bar">
-        <div class="app-bar-left">
-            <img src="assets/img/amallogo.jpeg" alt="College Logo" class="college-logo">
-            <span class="welcome-message">Welcome, <?php echo $user['name']; ?></span>
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-
-                <li><a href="profile.php" class="active">Profile</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="app-bar">
+            <div class="app-bar-left">
+                <img src="../../amallogo.jpeg" alt="College Logo" class="college-logo">
+                <span class="welcome-message">Welcome, <?php echo $user['name']; ?></span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/Teachers-Companion---Project/index.php" class="active">Home</a></li>
+                    <li><a href="/Teachers-Companion---Project/profile.php">Profile</a></li>
+                    <li><a href="/Teachers-Companion---Project/logout.php">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
     <br>
     <div class="profile-container">
         <h2>Edit Profile</h2><br>

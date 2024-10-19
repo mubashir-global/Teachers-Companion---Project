@@ -3,7 +3,7 @@ session_start();
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "Junu123#";
 $dbname = "teachers_companion";
 
 // Create connection
@@ -13,6 +13,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+// include '../../header_nav_footer.php';
 
 
 // Check if user is logged in
@@ -218,7 +219,7 @@ $students = getAllStudents($conn);
 <body>
 <header class="app-bar">
             <div class="app-bar-left">
-                <img src="assets\img\amallogo.jpeg" alt="College Logo" class="college-logo">
+                <img src="../../amallogo.jpeg" alt="College Logo" class="college-logo">
                 <span class="welcome-message">Welcome, <?php echo $user['name']; ?></span>
             </div>
             <nav class="navbar">

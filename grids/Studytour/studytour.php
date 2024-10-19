@@ -2,7 +2,7 @@
 // Database connection
 $servername = "localhost"; 
 $username = "root"; 
-$password = ""; 
+$password = "Junu123#"; 
 $dbname = "teachers_companion"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,6 +12,7 @@ if ($conn->connect_error) {
 }
 
 $message = "";
+include '../../header_nav_footer.php';
 
 // Handle form submission for study tour registration
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -121,7 +122,7 @@ if (isset($_POST['download'])) {
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 20px;
+            /* padding: 20px; */
             background-color: #f0f4f8;
         }
         .container {

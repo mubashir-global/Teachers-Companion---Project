@@ -1,17 +1,11 @@
 <?php
 session_start();
-include ('db_connection.php');
-
-// Check if user is logged in
 if (!isset($_SESSION['user'])) {
     header("Location: signin.html");
     exit();
 }
 
-// usr details from session
 $user = $_SESSION['user'];
-$teacher_id = $user['id'];
-$grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +14,9 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Teachers Companion</title>
+    <title>Teachers Companion</title>
     <style>
+        /* General Reset and Box-Sizing */
         /* General Reset and Box-Sizing */
         * {
             margin: 0;
@@ -188,10 +183,9 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
 </head>
 
 <body>
-    <div class="dashboard-container">
-    <header class="app-bar">
+<header class="app-bar">
             <div class="app-bar-left">
-                <img src="amallogo.jpeg" alt="College Logo" class="college-logo">
+                <img src="../../amallogo.jpeg" alt="College Logo" class="college-logo">
                 <span class="welcome-message">Welcome, <?php echo $user['name']; ?></span>
             </div>
             <nav class="navbar">
@@ -202,23 +196,12 @@ $grids = $conn->query("SELECT * FROM grids WHERE teacher_id=$teacher_id")->fetch
                 </ul>
             </nav>
         </header>
-        <main>
-            <div class="grid">
-                <?php foreach ($grids as $grid): ?>
-                    <a href="<?= $grid['url'] ?>" class="card">
-                        <h3><?= $grid['title'] ?></h3>
-                        <p><?= $grid['description'] ?></p>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        </main>
-        <footer class="footer">
-            <div class="college-info">
-                <p>Amal College</p>
-                <p>&copy; <?php echo date("Y"); ?> All rights reserved.</p>
-            </div>
-        </footer>
-    </div>
+    <!-- <footer class="footer">
+        <div class="college-info">
+            <p>Amal College</p>
+            <p>&copy; <?php echo date("Y"); ?> All rights reserved.</p>
+        </div>
+    </footer> -->
 </body>
 
 </html>

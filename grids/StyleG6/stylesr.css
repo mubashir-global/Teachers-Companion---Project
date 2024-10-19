@@ -1,0 +1,235 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+body{
+    margin: 0;
+ font-family: "Rubik", sans-serif;;
+}
+a{  
+    text-decoration: none;
+}
+/* navbar */
+section#nav{
+    background-color: rgb(54, 165, 54);
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    height: 12vh;
+    
+}
+section#nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+   
+}
+section#nav ul li{
+    float :left;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    position: relative;
+    top: 10px;
+}
+section#nav div.left li:first-child{
+    padding: 0;
+    margin: 0;
+}
+section#nav div.left li img{
+    width: 85px;
+    height: 77px;
+    position: relative;
+   
+    
+}
+section#nav ul li a {
+    display: block;
+    color: white;
+    
+    text-decoration: none;
+}
+section#nav div.left{
+    /* margin-left: 10px; */
+    text-align: center;
+    
+    justify-self: start;
+}
+section#nav div.right{
+   /* position: relative;
+   right: 10px; */
+    margin-right: 10px;
+}
+/* home */
+section#home{
+    background: #c8cec9;
+    margin-top: 0;
+    height: 140vh;
+    padding: 0;
+    
+    
+    
+}
+section#home div.home,section#coaching div.home{
+    background: #fff;
+    margin-left: 15%;
+    
+    margin-right: 15%;
+    padding-left: 20px;
+    padding-top: 20px;
+    /* width: 300px;
+    height: 200px; */
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding-bottom: 22px;
+    border-radius: 15px;
+    
+}
+section#home div.home h2{
+    margin: 0;
+    padding-top: 16px;
+}
+section#home div.home a{
+    background-color: rgb(54, 165, 54); /* Green */
+    border-radius: 5px;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    
+}
+/* section#home div.home table{
+    width:50px;
+} */
+section#home div.home table tr.head{
+    background: rgb(54, 165, 54);
+    color: #fff;
+}
+section#home div.home table tr td{
+    border: 1px solid #000;
+    text-align: center;
+    
+    border-collapse: collapse;
+}
+ul li a {
+            color: #ecf0f1; /* Light text color */
+            text-decoration: none; /* Remove default underline */
+            padding: 10px; /* Padding for clickable area */
+            font-family: 'Arial', sans-serif; /* Clean font choice */
+            font-weight: bold; /* Bold text */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        /* Hover effect for links */
+        ul li a:hover {
+            color: #fff; /* White text on hover */
+        }
+
+        /* Underline effect */
+        ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0; /* Initial width for the underline */
+            height: 3px; /* Height of the underline */
+            background-color: #fff; /* White underline */
+            left: 0;
+            bottom: -5px; /* Position the underline just below the text */
+            transition: width 0.3s ease; /* Smooth transition for the underline */
+        }
+
+        /* Expand the underline on hover */
+        ul li a:hover::after {
+            width: 100%; /* Full width underline on hover */
+        }
+section#home div.action,section#coaching div.action{
+    background: rgba(153, 156, 156, 0.377);
+    /* justify-content: center; */
+    margin-left: 5%;
+    padding-left: 5px;
+    border-radius: 5px;
+    width: 82%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /* height: 20px; */
+    /* background-color: #e1e5e9; */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+section#home div.action table,section#home div.action table tr td input,section#home div.action table tr td select,section#coaching div.action table tr td input{
+
+width: 98%;
+height: 30px;
+margin-bottom: 5px;
+border-radius: 5px;
+border:0;
+}
+section#home div.action table tr td ,section#coaching div.action table tr td{
+ border:0;
+text-align: left;
+}
+section#home div.action table tr td button.btn,section#coaching div.action table tr td button.btn {
+color: #ffffff;
+background-color: rgb(54, 165, 54);
+}
+ .input:focus{
+    border:1px rgb(54, 165, 54);
+
+}
+
+
+section#bottom_nav{
+    position: fixed; /* Fixes the footer at the bottom */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
+    background-color:rgb(54, 165, 54) ;
+    color: #fff;
+    border-top: 1px solid #ccc; /* Optional: Add a border for separation */
+    text-align: center; /* Center align text */
+    padding: 1px 0; /* Add some padding */
+    z-index: 1000; 
+   
+    
+    
+    
+    
+}
+section#bottom_nav ul li{
+    text-align: center;
+   list-style-type:none;
+}
+section#bottom_nav div.copyright{
+    text-align: center;
+}
+section#coaching{
+    background: #c8cec9;
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+    margin-bottom: 10px;
+    
+}
+ table,table tr td input, table tr td select,table tr td input{
+
+    width: 98%;
+    height: 30px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border:0;
+    }
+     table tr td ,table tr td{
+     border:0;
+    text-align: left;
+    }
+     table tr td button.btn, table tr th{
+    color: #ffffff;
+    background-color: rgb(54, 165, 54);
+    }
+     .input:focus{
+        border:1px rgb(54, 165, 54);
+    
+    }

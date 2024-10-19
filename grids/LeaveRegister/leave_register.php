@@ -2,7 +2,7 @@
 // Database connection
 $servername = "localhost"; 
 $username = "root"; 
-$password = ""; 
+$password = "Junu123#"; 
 $dbname = "teachers_companion"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,6 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+include '../../header_nav_footer.php';
 
 // Handle form submission for adding a new entry
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['action'])) {
@@ -73,7 +74,7 @@ $result = $conn->query("SELECT * FROM leave_register");
             font-family: Arial, sans-serif;
             background-color: #f4f4f4; /* Light background */
             margin: 0;
-            padding: 20px;
+            /* padding: 20px; */
         }
 
         /* Container Styles */
