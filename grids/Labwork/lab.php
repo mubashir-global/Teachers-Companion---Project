@@ -11,6 +11,7 @@ try {
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
+include '../../header_nav_footer.php';
 
 // Set default semester and handle form submissions
 $selectedSemester = isset($_POST['semester']) ? $_POST['semester'] : 1; // Default to semester 1

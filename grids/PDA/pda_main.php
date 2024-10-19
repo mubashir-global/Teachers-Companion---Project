@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="pda.css">
 </head>
 <body>
+    <?php 
+            include '../../header_nav_footer.php';
+            ?>
     <div class="form-container">
         <h2>Professional Development Activities</h2>
         <form action="pda.php" method="POST">

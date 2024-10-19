@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="aw.css">
 </head>
 <body>
+    <?php
+        include '../../header_nav_footer.php';
+        ?>
     <div class="form-container">
         <h2>Administration Works</h2>
         <form action="aw.php" method="POST">

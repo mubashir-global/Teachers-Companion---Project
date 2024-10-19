@@ -1,9 +1,9 @@
 <?php
 // db.php - Database connection
 $host = 'localhost';
-$db = 'field based activities'; // Correct format, no spaces in DB name
+$db = 'teachers_companion'; // Correct format, no spaces in DB name
 $user = 'root';
-$pass = '';
+$pass = 'Junu123#';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
@@ -11,6 +11,7 @@ try {
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+include '../../header_nav_footer.php';
 
 // Handle form submission for adding activities
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {

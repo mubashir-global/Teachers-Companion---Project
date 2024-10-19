@@ -3,8 +3,8 @@
 // Database connection settings
 $host = 'localhost';
 $user = 'root';
-$pass = '';
-$db = 'nazalprojectdb'; // Your database name
+$pass = 'Junu123#';
+$db = 'teachers_companion'; // Your database name
 
 // Create connection
 $conn = new mysqli($host, $user, $pass, $db);
@@ -13,6 +13,7 @@ $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+include '../../header_nav_footer.php';
 
 // SQL query to fetch data from the database
 $sql = "SELECT id, date, conductingAgency, subject FROM pda"; // Adjust table name and include id for deletion
